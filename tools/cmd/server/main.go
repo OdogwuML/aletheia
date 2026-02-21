@@ -8,10 +8,14 @@ import (
 
 	"github.com/aletheia/backend/internal/handlers"
 	mw "github.com/aletheia/backend/internal/middleware"
+	"github.com/joho/godotenv"
 	supabase "github.com/supabase-community/supabase-go"
 )
 
 func main() {
+	// Load .env file (ignored if not found, e.g. in production)
+	_ = godotenv.Load("../.env")
+
 	// Load environment variables
 	supabaseURL := getEnv("SUPABASE_URL", "https://mnwjsmkawisyisauxeyy.supabase.co")
 	supabaseKey := getEnv("SUPABASE_ANON_KEY", "")
@@ -40,49 +44,49 @@ func main() {
 	mux := http.NewServeMux()
 
 	// ============================================
-	// PUBLIC ROUTES (no auth required)
+	// PUBLIC ROUTES (no auth required) - v1
 	// ============================================
-	mux.HandleFunc("POST /api/auth/signup", authHandler.Signup)
-	mux.HandleFunc("POST /api/auth/login", authHandler.Login)
-	mux.HandleFunc("POST /api/auth/accept-invite", authHandler.AcceptInvite)
-	mux.HandleFunc("GET /api/invitations/verify", invitationsHandler.GetInviteByToken)
-	mux.HandleFunc("POST /api/webhooks/paystack", paymentsHandler.PaystackWebhook)
+	mux.HandleFunc("POST /api/v1/auth/signup", authHandler.Signup)
+	mux.HandleFunc("POST /api/v1/auth/login", authHandler.Login)
+	mux.HandleFunc("POST /api/v1/auth/accept-invite", authHandler.AcceptInvite)
+	mux.HandleFunc("GET /api/v1/invitations/verify", invitationsHandler.GetInviteByToken)
+	mux.HandleFunc("POST /api/v1/webhooks/paystack", paymentsHandler.PaystackWebhook)
 
 	// ============================================
-	// AUTHENTICATED ROUTES
+	// AUTHENTICATED ROUTES - v1
 	// ============================================
 	authMw := mw.AuthMiddleware(supabaseURL, supabaseKey)
 
 	// --- Dashboard ---
-	mux.Handle("GET /api/dashboard/landlord", authMw(mw.RequireRole("landlord")(http.HandlerFunc(dashboardHandler.LandlordDashboard))))
-	mux.Handle("GET /api/dashboard/tenant", authMw(mw.RequireRole("tenant")(http.HandlerFunc(dashboardHandler.TenantDashboard))))
+	mux.Handle("GET /api/v1/dashboard/landlord", authMw(mw.RequireRole("landlord")(http.HandlerFunc(dashboardHandler.LandlordDashboard))))
+	mux.Handle("GET /api/v1/dashboard/tenant", authMw(mw.RequireRole("tenant")(http.HandlerFunc(dashboardHandler.TenantDashboard))))
 
 	// --- Buildings (Landlord only) ---
-	mux.Handle("GET /api/buildings", authMw(mw.RequireRole("landlord")(http.HandlerFunc(buildingsHandler.ListBuildings))))
-	mux.Handle("POST /api/buildings", authMw(mw.RequireRole("landlord")(http.HandlerFunc(buildingsHandler.CreateBuilding))))
-	mux.Handle("GET /api/buildings/{id}", authMw(mw.RequireRole("landlord")(http.HandlerFunc(buildingsHandler.GetBuilding))))
-	mux.Handle("PUT /api/buildings/{id}", authMw(mw.RequireRole("landlord")(http.HandlerFunc(buildingsHandler.UpdateBuilding))))
+	mux.Handle("GET /api/v1/buildings", authMw(mw.RequireRole("landlord")(http.HandlerFunc(buildingsHandler.ListBuildings))))
+	mux.Handle("POST /api/v1/buildings", authMw(mw.RequireRole("landlord")(http.HandlerFunc(buildingsHandler.CreateBuilding))))
+	mux.Handle("GET /api/v1/buildings/{id}", authMw(mw.RequireRole("landlord")(http.HandlerFunc(buildingsHandler.GetBuilding))))
+	mux.Handle("PUT /api/v1/buildings/{id}", authMw(mw.RequireRole("landlord")(http.HandlerFunc(buildingsHandler.UpdateBuilding))))
 
 	// --- Units (Landlord) ---
-	mux.Handle("GET /api/buildings/{id}/units", authMw(mw.RequireRole("landlord")(http.HandlerFunc(buildingsHandler.ListUnits))))
-	mux.Handle("POST /api/units", authMw(mw.RequireRole("landlord")(http.HandlerFunc(buildingsHandler.CreateUnit))))
+	mux.Handle("GET /api/v1/buildings/{id}/units", authMw(mw.RequireRole("landlord")(http.HandlerFunc(buildingsHandler.ListUnits))))
+	mux.Handle("POST /api/v1/units", authMw(mw.RequireRole("landlord")(http.HandlerFunc(buildingsHandler.CreateUnit))))
 
 	// --- Payments ---
-	mux.Handle("POST /api/payments/initialize", authMw(mw.RequireRole("tenant")(http.HandlerFunc(paymentsHandler.InitializePayment))))
-	mux.Handle("GET /api/payments", authMw(http.HandlerFunc(paymentsHandler.ListPayments)))
+	mux.Handle("POST /api/v1/payments/initialize", authMw(mw.RequireRole("tenant")(http.HandlerFunc(paymentsHandler.InitializePayment))))
+	mux.Handle("GET /api/v1/payments", authMw(http.HandlerFunc(paymentsHandler.ListPayments)))
 
 	// --- Invitations (Landlord) ---
-	mux.Handle("POST /api/invitations", authMw(mw.RequireRole("landlord")(http.HandlerFunc(invitationsHandler.SendInvite))))
-	mux.Handle("GET /api/invitations", authMw(mw.RequireRole("landlord")(http.HandlerFunc(invitationsHandler.ListInvitations))))
+	mux.Handle("POST /api/v1/invitations", authMw(mw.RequireRole("landlord")(http.HandlerFunc(invitationsHandler.SendInvite))))
+	mux.Handle("GET /api/v1/invitations", authMw(mw.RequireRole("landlord")(http.HandlerFunc(invitationsHandler.ListInvitations))))
 
 	// --- Maintenance Requests ---
-	mux.Handle("POST /api/maintenance", authMw(mw.RequireRole("tenant")(http.HandlerFunc(maintenanceHandler.CreateRequest))))
-	mux.Handle("GET /api/maintenance", authMw(http.HandlerFunc(maintenanceHandler.ListRequests)))
-	mux.Handle("PUT /api/maintenance/{id}/status", authMw(mw.RequireRole("landlord")(http.HandlerFunc(maintenanceHandler.UpdateRequestStatus))))
+	mux.Handle("POST /api/v1/maintenance", authMw(mw.RequireRole("tenant")(http.HandlerFunc(maintenanceHandler.CreateRequest))))
+	mux.Handle("GET /api/v1/maintenance", authMw(http.HandlerFunc(maintenanceHandler.ListRequests)))
+	mux.Handle("PUT /api/v1/maintenance/{id}/status", authMw(mw.RequireRole("landlord")(http.HandlerFunc(maintenanceHandler.UpdateRequestStatus))))
 
 	// --- Documents ---
-	mux.Handle("POST /api/documents", authMw(http.HandlerFunc(documentsHandler.UploadDocument)))
-	mux.Handle("GET /api/documents", authMw(http.HandlerFunc(documentsHandler.ListDocuments)))
+	mux.Handle("POST /api/v1/documents", authMw(http.HandlerFunc(documentsHandler.UploadDocument)))
+	mux.Handle("GET /api/v1/documents", authMw(http.HandlerFunc(documentsHandler.ListDocuments)))
 
 	// ============================================
 	// STATIC FILE SERVER (frontend)

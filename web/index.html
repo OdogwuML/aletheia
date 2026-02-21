@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aletheia — Property management made simple for Nigeria">
+  <title>Aletheia — Property Management</title>
+  <!-- Tailwind CSS (for landing page) -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <!-- Material Symbols Outlined -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13ecda",
+            "background-light": "#f6f8f8",
+            "background-dark": "#102220",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+
+  <!-- ============================================
+     LANDING PAGE
+     ============================================ -->
+  <div id="page-landing" class="hidden">
+    <!-- Navigation Bar -->
+    <header
+      class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-2 group cursor-pointer" onclick="window.location.hash=''">
+          <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center text-primary">
+            <span class="material-symbols-outlined text-3xl font-bold">domain</span>
+          </div>
+          <h1 class="text-2xl font-black tracking-tight text-slate-900 dark:text-white">Aletheia</h1>
+        </div>
+        <nav class="hidden md:flex items-center gap-10">
+          <a class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors"
+            href="#">Features</a>
+          <a class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors"
+            href="#">Pricing</a>
+          <a class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors"
+            href="#">About</a>
+        </nav>
+        <div class="flex items-center gap-4">
+          <button
+            class="hidden sm:flex text-sm font-bold text-slate-700 dark:text-slate-200 hover:text-primary px-4 py-2 transition-colors"
+            onclick="window.location.hash='#/login'">Login</button>
+          <button
+            class="bg-primary text-slate-900 font-bold text-sm px-6 py-2.5 rounded-lg hover:brightness-105 active:scale-95 transition-all shadow-sm shadow-primary/20"
+            onclick="window.location.hash='#/signup'">Sign Up</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="relative overflow-hidden">
+      <!-- Hero Section -->
+      <section class="max-w-7xl mx-auto px-6 lg:px-10 pt-16 pb-24 lg:pt-24 lg:pb-32">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div class="flex flex-col gap-8 max-w-2xl">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-slate-800 dark:text-slate-200 text-xs font-bold uppercase tracking-wider border border-primary/20">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              Optimized for Nigerian Landlords
+            </div>
+            <div class="space-y-4">
+              <h2 class="text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight text-slate-900 dark:text-white">
+                Property Management, <span
+                  class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-teal-600">Simplified.</span>
+              </h2>
+              <p class="text-lg lg:text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+                Effortlessly track leases, automate rent collection in ₦, and manage tenants across Lagos and beyond.
+                The modern operating system for the Nigerian market.
+              </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4 items-center">
+              <button
+                class="w-full sm:w-auto px-8 py-4 bg-primary text-slate-900 text-lg font-bold rounded-xl shadow-lg shadow-primary/25 hover:brightness-105 hover:-translate-y-0.5 active:translate-y-0 transition-all"
+                onclick="window.location.hash='#/signup'">
+                Get Started for Free
+              </button>
+              <button
+                class="w-full sm:w-auto px-8 py-4 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white text-lg font-bold rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors inline-flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined">play_circle</span> Watch Demo
+              </button>
+            </div>
+          </div>
+          <div class="relative group">
+            <div
+              class="absolute -inset-1 bg-gradient-to-tr from-primary/30 to-slate-200/20 rounded-2xl blur-2xl group-hover:opacity-75 transition duration-1000 group-hover:duration-200">
+            </div>
+            <div
+              class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-slate-200 dark:bg-slate-800">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1r_sT3-3OfTqpEFkX1v4r0qnWz2f25heXjR1Cy7HjWUr23PIXpXwF743YbBjWFggsHjPk-LKjfQ5efutrNJ9RwQutJlTPMZ_vJqoqKgyf9p5wNyU88QWDdQPyGoMF-GyIPOoirzPufhANQrqNmSQ7dvHHXOY5zaEC-0Dz_3e56UwMskAqPIaSkmwqwn0OZyd-u_MQRQswm3KAWq9oKGqiJCTp5zji6ptgdnUirD6PglVlbTZJMPpVZ1mUQX4gxyX853ACsQvkiUQ"
+                alt="Modern Architecture" class="w-full h-full object-cover">
+              <div
+                class="absolute bottom-6 left-6 right-6 p-6 bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg rounded-xl shadow-xl flex items-center justify-between border border-white/20">
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-slate-900">
+                    <span class="material-symbols-outlined font-bold">payments</span>
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold text-slate-500 uppercase">Recent Payment</p>
+                    <p class="text-lg font-bold text-slate-900 dark:text-white">₦450,000.00</p>
+                  </div>
+                </div>
+                <div
+                  class="flex items-center gap-1 text-teal-600 bg-teal-50 dark:bg-teal-900/30 px-3 py-1 rounded-full text-sm font-bold">
+                  <span class="material-symbols-outlined text-sm">verified</span> Verified
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="max-w-7xl mx-auto px-6 pb-24">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-primary font-bold tracking-widest text-xs uppercase mb-4 block">Core Features</span>
+          <h2 class="text-4xl md:text-5xl font-black text-slate-900 dark:text-white leading-tight mb-6">Everything you
+            need to manage properties in Nigeria</h2>
+          <p class="text-lg text-slate-600 dark:text-slate-400">Built specifically for the local market, ensuring
+            compliance, ease of payment, and seamless communication.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 rounded-xl hover:border-primary/50 transition-all group">
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+              <span
+                class="material-symbols-outlined text-primary group-hover:text-background-dark transition-colors">dashboard_customize</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">Landlord Portal</h3>
+            <p class="text-slate-600 dark:text-slate-400">Get full oversight of your property portfolio. Track
+              vacancies, maintenance requests, and financial performance.</p>
+          </div>
+          <div
+            class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 rounded-xl hover:border-primary/50 transition-all group">
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+              <span
+                class="material-symbols-outlined text-primary group-hover:text-background-dark transition-colors">payments</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">Tenant Payments (₦)</h3>
+            <p class="text-slate-600 dark:text-slate-400">Automated rent collection in Naira. Pay via transfer, card, or
+              USSD with instant reconciliation.</p>
+          </div>
+          <div
+            class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 rounded-xl hover:border-primary/50 transition-all group">
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+              <span
+                class="material-symbols-outlined text-primary group-hover:text-background-dark transition-colors">person_add</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">Instant Invites</h3>
+            <p class="text-slate-600 dark:text-slate-400">Onboard new tenants in seconds. Send secure links via WhatsApp
+              or email to handle digital KYC.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="max-w-7xl mx-auto px-6 pb-32">
+        <div class="bg-slate-900 dark:bg-slate-800 rounded-2xl p-12 text-center relative overflow-hidden">
+          <div class="relative z-10">
+            <h2 class="text-3xl font-black text-white mb-6">Ready to transform your management?</h2>
+            <p class="text-slate-400 max-w-2xl mx-auto mb-10 text-lg">Join landlords across Lagos, Abuja, and Port
+              Harcourt who are digitizing their business with Aletheia.</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <button
+                class="bg-primary text-background-dark px-8 py-4 rounded-lg font-bold hover:scale-105 transition-transform w-full sm:w-auto"
+                onclick="window.location.hash='#/signup'">Start for Free</button>
+              <button
+                class="bg-transparent border border-slate-700 text-white px-8 py-4 rounded-lg font-bold hover:bg-slate-800 transition-colors w-full sm:w-auto">Request
+                Demo</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 pt-20 pb-10">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-10 mb-16">
+          <div class="col-span-2">
+            <div class="flex items-center gap-2 mb-6">
+              <div class="bg-primary p-1 rounded-md text-background-dark">
+                <span class="material-symbols-outlined text-lg block">apartment</span>
+              </div>
+              <span class="text-lg font-black tracking-tight text-slate-900 dark:text-white">Aletheia</span>
+            </div>
+            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed max-w-xs">The modern standard for
+              property management in Nigeria. Efficient and built for growth.</p>
+          </div>
+          <!-- Simple links for footer -->
+          <div>
+            <h4 class="font-bold text-slate-900 dark:text-white mb-6">Product</h4>
+            <ul class="space-y-4 text-sm text-slate-500">
+              <li><a href="#" class="hover:text-primary transition-colors">Features</a></li>
+              <li><a href="#" class="hover:text-primary transition-colors">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 dark:text-white mb-6">Company</h4>
+            <ul class="space-y-4 text-sm text-slate-500">
+              <li><a href="#" class="hover:text-primary transition-colors">About Us</a></li>
+              <li><a href="#" class="hover:text-primary transition-colors">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 dark:text-white mb-6">Resources</h4>
+            <ul class="space-y-4 text-sm text-slate-500">
+              <li><a href="#" class="hover:text-primary transition-colors">Documentation</a></li>
+              <li><a href="#" class="hover:text-primary transition-colors">Help Center</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 dark:text-white mb-6">Legal</h4>
+            <ul class="space-y-4 text-sm text-slate-500">
+              <li><a href="#" class="hover:text-primary transition-colors">Privacy</a></li>
+              <li><a href="#" class="hover:text-primary transition-colors">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-slate-100 dark:border-slate-800 pt-10 text-center">
+          <p class="text-xs text-slate-400">© 2024 Aletheia Limited. All rights reserved. Registered in Nigeria.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div id="page-auth" class="auth-page hidden">
+    <div class="auth-topbar">
+      <div class="logo">
+        <div class="logo-icon">🏠</div>
+        <span class="logo-text">Aletheia</span>
+      </div>
+      <nav>
+        <a href="#">How it works</a>
+        <a href="#">Pricing</a>
+        <a href="#">Support</a>
+        <a href="#" class="btn-waitlist">Join Waitlist</a>
+      </nav>
+    </div>
+
+    <div class="auth-body">
+      <div class="auth-card">
+        <h1>Welcome Back</h1>
+        <p class="subtitle" id="auth-subtitle">Managing properties in Nigeria made simple.</p>
+
+        <div id="auth-error" class="auth-error-msg hidden"></div>
+
+        <form id="auth-form" autocomplete="off">
+          <!-- Name (signup only) -->
+          <div class="form-group hidden" id="auth-name-group">
+            <label>Full Name</label>
+            <input type="text" class="form-control" id="auth-name" placeholder="e.g. Tunde Bakare">
+          </div>
+
+          <!-- Role selector -->
+          <div class="role-selector hidden" id="auth-role-group">
+            <label class="role-label">I am a...</label>
+            <div class="role-options">
+              <label class="role-option selected" id="role-landlord" onclick="pages.auth.selectRole('landlord')">
+                <input type="radio" name="role" value="landlord" checked>
+                <span class="role-icon">🏢</span>
+                <span class="role-name">Landlord</span>
+              </label>
+              <label class="role-option" id="role-tenant" onclick="pages.auth.selectRole('tenant')">
+                <input type="radio" name="role" value="tenant">
+                <span class="role-icon">🔑</span>
+                <span class="role-name">Tenant</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Email Address</label>
+            <div class="input-with-icon">
+              <span class="input-icon">✉</span>
+              <input type="email" class="form-control" id="auth-email" placeholder="e.g. name@example.com.ng" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Password <a href="#" id="auth-forgot-link" class="hidden">Forgot password?</a></label>
+            <div class="input-with-icon">
+              <span class="input-icon">🔒</span>
+              <input type="password" class="form-control" id="auth-password" placeholder="••••••••" required>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit" id="auth-submit-btn">Sign In →</button>
+        </form>
+
+        <div class="auth-divider">OR</div>
+
+        <p class="auth-footer-text">
+          <span id="auth-toggle-text">Don't have an account?</span>
+          <a href="#" id="auth-toggle-link"> Sign up for free</a>
+        </p>
+
+        <div class="auth-trust">🛡 Secure Property Management for Nigeria</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+     APP SHELL (Landlord + Tenant shared)
+     ============================================ -->
+  <div id="page-app" class="app-shell hidden">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo-icon">🏠</div>
+        <div>
+          <div class="logo-text">Aletheia</div>
+          <div class="logo-label" id="sidebar-portal-label">Landlord Portal</div>
+        </div>
+      </div>
+
+      <!-- Landlord Nav -->
+      <nav class="sidebar-nav" id="nav-landlord">
+        <a href="#/dashboard" class="nav-link active" data-page="dashboard">
+          <span class="nav-icon">📊</span> Dashboard
+        </a>
+        <a href="#/buildings" class="nav-link" data-page="buildings">
+          <span class="nav-icon">🏢</span> Properties
+        </a>
+        <a href="#/payments" class="nav-link" data-page="payments">
+          <span class="nav-icon">💳</span> Payments
+        </a>
+        <a href="#/maintenance" class="nav-link" data-page="maintenance">
+          <span class="nav-icon">🔧</span> Maintenance
+        </a>
+        <a href="#/documents" class="nav-link" data-page="documents">
+          <span class="nav-icon">📄</span> Documents
+        </a>
+      </nav>
+
+      <!-- Tenant Nav -->
+      <nav class="sidebar-nav hidden" id="nav-tenant">
+        <a href="#/tenant" class="nav-link active" data-page="tenant">
+          <span class="nav-icon">📊</span> Dashboard
+        </a>
+        <a href="#/payments" class="nav-link" data-page="payments">
+          <span class="nav-icon">💳</span> Payments
+        </a>
+        <a href="#/maintenance" class="nav-link" data-page="maintenance">
+          <span class="nav-icon">🔧</span> Maintenance
+        </a>
+        <a href="#/documents" class="nav-link" data-page="documents">
+          <span class="nav-icon">📄</span> Documents
+        </a>
+      </nav>
+
+      <!-- Settings link -->
+      <div style="padding:0 0.75rem 0.5rem">
+        <a href="#" class="nav-link"><span class="nav-icon">⚙</span> Settings</a>
+      </div>
+
+      <!-- User footer -->
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <div class="user-avatar" id="user-avatar">TB</div>
+          <div>
+            <div class="user-name" id="user-name">User</div>
+            <div class="user-role" id="user-role">Role</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Top bar -->
+      <div class="top-bar">
+        <div class="search-box">
+          <span>🔍</span>
+          <input type="text" placeholder="Search properties, tenants...">
+        </div>
+        <div class="top-bar-right">
+          <button class="notification-btn">🔔<span class="dot"></span></button>
+          <div class="user-chip">
+            <div>
+              <div class="user-chip-name" id="topbar-name">User</div>
+              <div class="user-chip-role" id="topbar-role">ROLE</div>
+            </div>
+            <div class="user-avatar" id="topbar-avatar" style="width:36px;height:36px;font-size:0.75rem">TB</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== LANDLORD DASHBOARD ===== -->
+      <div id="view-dashboard" class="page-content hidden">
+        <div class="page-header-row">
+          <div>
+            <h1 class="page-title">Welcome back, <span id="dash-name">Chief</span></h1>
+            <p class="page-subtitle">Overview of your property portfolio performance today.</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-secondary">📅 This Month</button>
+            <a href="#/buildings" class="btn btn-primary">+ Add Property</a>
+          </div>
+        </div>
+        <div id="dash-stats" class="stats-grid"></div>
+        <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:1.5rem;margin-bottom:1.5rem">
+          <div class="card" id="dash-recent-payments" style="padding:0">
+            <div
+              style="padding:1.25rem 1.5rem;border-bottom:1px solid var(--gray-200);display:flex;justify-content:space-between;align-items:center">
+              <h3 class="font-bold text-lg">Recent Payments</h3>
+              <button class="btn btn-sm btn-secondary">≡ Filter</button>
+            </div>
+            <div style="padding:1rem 1.5rem" id="dash-payments-table"></div>
+          </div>
+          <div class="card" style="padding:0">
+            <div
+              style="padding:1.25rem 1.5rem;border-bottom:1px solid var(--gray-200);display:flex;justify-content:space-between;align-items:center">
+              <h3 class="font-bold text-lg">Active Properties</h3>
+              <a href="#/buildings" style="font-size:0.8rem;font-weight:600">View All</a>
+            </div>
+            <div id="dash-properties" style="padding:1rem"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== BUILDINGS LIST ===== -->
+      <div id="view-buildings" class="page-content hidden">
+        <div class="page-header-row">
+          <div>
+            <h1 class="page-title">Buildings</h1>
+            <p class="page-subtitle" id="buildings-subtitle">Manage your property locations across Nigeria.</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-secondary" onclick="">≡ Filter</button>
+            <button class="btn btn-primary" onclick="pages.buildings.showAddModal()">+ Add New Building</button>
+          </div>
+        </div>
+        <div class="filter-bar">
+          <div class="search-input"><span>🔍</span><input type="text" placeholder="Search by name or Lagos address...">
+          </div>
+          <button class="filter-pill active">All Properties</button>
+          <button class="filter-pill">Residential</button>
+          <button class="filter-pill">Commercial</button>
+          <button class="filter-pill">Mixed Use</button>
+        </div>
+        <div id="buildings-grid" class="buildings-grid"></div>
+      </div>
+
+      <!-- ===== BUILDING DETAIL ===== -->
+      <div id="view-building-detail" class="page-content hidden">
+        <div class="page-header-row">
+          <div>
+            <div class="text-sm text-gray" style="margin-bottom:0.25rem">
+              <a href="#/buildings">Properties</a> <span style="color:var(--gray-300)">›</span> <span
+                id="building-breadcrumb">Building</span>
+            </div>
+            <h1 class="page-title" id="building-detail-name">Building</h1>
+            <p class="page-subtitle flex items-center gap-2" id="building-detail-address">📍 Address</p>
+          </div>
+          <div class="page-actions">
+            <select class="form-control" style="width:auto">
+              <option>This Month</option>
+            </select>
+            <button class="btn btn-primary" onclick="pages.buildingDetail.showAddUnitModal()">+ New Unit</button>
+          </div>
+        </div>
+        <div id="building-stats" class="stats-grid"></div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>UNIT</th>
+                <th>TENANT</th>
+                <th>MONTHLY RENT</th>
+                <th>STATUS</th>
+                <th>DATE PAID</th>
+                <th>AMOUNT PAID</th>
+                <th>ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody id="building-units-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ===== PAYMENT RECORDS ===== -->
+      <div id="view-payments" class="page-content hidden">
+        <div class="page-header-row">
+          <div>
+            <h1 class="page-title">Payment Records</h1>
+            <p class="page-subtitle" id="payments-subtitle">Review and manage all rental transactions across your
+              property portfolio.</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-secondary">📄 Export PDF</button>
+            <button class="btn btn-secondary">📊 Export Excel</button>
+          </div>
+        </div>
+        <div class="filter-bar">
+          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;color:var(--gray-500)">Filters:
+          </div>
+          <select class="form-control" style="width:auto" id="payment-building-filter">
+            <option>All Buildings</option>
+          </select>
+          <select class="form-control" style="width:auto" id="payment-status-filter" onchange="pages.payments.filter()">
+            <option value="">Status: All</option>
+            <option value="successful">Paid</option>
+            <option value="pending">Pending</option>
+            <option value="failed">Overdue</option>
+          </select>
+        </div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>TENANT NAME</th>
+                <th>BUILDING & UNIT</th>
+                <th>AMOUNT</th>
+                <th>DATE</th>
+                <th>STATUS</th>
+                <th>METHOD</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="payments-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ===== MAINTENANCE ===== -->
+      <div id="view-maintenance" class="page-content hidden">
+        <div class="page-header-row">
+          <div>
+            <h1 class="page-title">Maintenance</h1>
+            <p class="page-subtitle" id="maintenance-subtitle">Submit and track repair requests</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-primary hidden" id="btn-create-maintenance"
+              onclick="pages.maintenance.showCreateModal()">+ New Request</button>
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>DATE</th>
+                <th>ISSUE</th>
+                <th>PRIORITY</th>
+                <th>STATUS</th>
+                <th>ACTION</th>
+              </tr>
+            </thead>
+            <tbody id="maintenance-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ===== DOCUMENTS ===== -->
+      <div id="view-documents" class="page-content hidden">
+        <div class="page-header-row">
+          <div>
+            <h1 class="page-title">Documents</h1>
+            <p class="page-subtitle">Lease agreements, receipts, and important files.</p>
+          </div>
+        </div>
+        <div id="documents-list" class="flex flex-col gap-3"></div>
+      </div>
+
+      <!-- ===== TENANT DASHBOARD ===== -->
+      <div id="view-tenant" class="page-content hidden">
+        <div class="tenant-header">
+          <div>
+            <div class="text-sm text-gray" style="margin-bottom:0.25rem">Home › Tenant Dashboard</div>
+            <h1>Welcome back, <span id="tenant-dash-name">Tenant</span></h1>
+            <p class="tenant-subtitle" id="tenant-building-subtitle">Manage your tenancy</p>
+          </div>
+          <div class="tenant-actions">
+            <button class="btn btn-secondary">↓ Receipts</button>
+            <button class="btn btn-secondary">✉ Contact Landlord</button>
+          </div>
+        </div>
+        <div class="tenant-main" id="tenant-main-content"></div>
+      </div>
+
+      <!-- ===== PAY RENT ===== -->
+      <div id="view-pay-rent" class="page-content hidden">
+        <div class="text-sm text-gray" style="margin-bottom:1rem">
+          <a href="#/tenant">🏠 Dashboard</a> <span style="color:var(--gray-300)">›</span> Pay Rent
+        </div>
+        <div class="pay-rent-page" id="pay-rent-container"></div>
+      </div>
+
+      <!-- ===== PAYMENT SUCCESS ===== -->
+      <div id="view-payment-success" class="page-content hidden">
+        <div class="success-page" id="success-container"></div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ============================================
+     INVITE ACCEPTANCE PAGE (standalone)
+     ============================================ -->
+  <div id="page-invite" class="invite-page hidden">
+    <div class="invite-topbar">
+      <div class="logo">
+        <div class="logo-icon">🏠</div>
+        <span class="logo-text">Aletheia</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:1.5rem">
+        <a href="#" style="font-size:0.875rem;color:var(--gray-600)">Support</a>
+        <div
+          style="width:36px;height:36px;border-radius:50%;background:var(--gray-100);display:flex;align-items:center;justify-content:center;color:var(--gray-400)">
+          👤</div>
+      </div>
+    </div>
+    <div class="invite-body">
+      <div class="invite-content" id="invite-card-content"></div>
+    </div>
+    <div class="invite-footer">
+      <div>🏠 Aletheia Nigeria</div>
+      <div>© 2024 Aletheia Property Management. All rights reserved.</div>
+      <div><a href="#">Help Center</a> &nbsp; <a href="#">Privacy</a> &nbsp; <a href="#">Security</a></div>
+    </div>
+  </div>
+
+  <!-- ============================================
+     MODALS
+     ============================================ -->
+
+  <!-- Add Building Modal -->
+  <div id="modal-add-building" class="modal-backdrop" onclick="if(event.target===this)this.classList.remove('active')">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <h3>Add New Building</h3>
+          <p>Create a new property profile in your portfolio.</p>
+        </div>
+        <button class="modal-close" onclick="this.closest('.modal-backdrop').classList.remove('active')">✕</button>
+      </div>
+      <form id="form-add-building" onsubmit="event.preventDefault();pages.buildings.createBuilding()">
+        <div class="modal-body flex flex-col gap-4">
+          <div class="form-group">
+            <label>Building Name</label>
+            <input type="text" class="form-control" id="building-name" placeholder="e.g., Harmony Court" required>
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <div class="input-with-icon">
+              <span class="input-icon">📍</span>
+              <input type="text" class="form-control" id="building-address" placeholder="e.g., 12 Lekki Phase 1, Lagos"
+                required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Total Units</label>
+              <input type="number" class="form-control" id="building-units" placeholder="0" required min="1">
+            </div>
+            <div class="form-group">
+              <label>Property Type</label>
+              <select class="form-control" id="building-type">
+                <option>Residential</option>
+                <option>Commercial</option>
+                <option>Mixed Use</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Property Photo</label>
+            <div class="upload-zone">
+              <div class="upload-icon">📷</div>
+              <div>Click to upload or drag and drop</div>
+              <div class="text-xs text-gray">PNG, JPG up to 5MB</div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"
+            onclick="this.closest('.modal-backdrop').classList.remove('active')">Cancel</button>
+          <button type="submit" class="btn btn-teal">Add Building</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Unit Modal -->
+  <div id="modal-add-unit" class="modal-backdrop" onclick="if(event.target===this)this.classList.remove('active')">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <h3>Add New Unit</h3>
+          <p>Create a unit in this building.</p>
+        </div>
+        <button class="modal-close" onclick="this.closest('.modal-backdrop').classList.remove('active')">✕</button>
+      </div>
+      <form id="form-add-unit" onsubmit="event.preventDefault();pages.buildingDetail.createUnit()">
+        <div class="modal-body flex flex-col gap-4">
+          <div class="form-group">
+            <label>Unit Number</label>
+            <input type="text" class="form-control" id="unit-number" placeholder="e.g., Unit 001" required>
+          </div>
+          <div class="form-group">
+            <label>Monthly Rent (₦)</label>
+            <input type="number" class="form-control" id="unit-rent" placeholder="e.g., 350000" required min="0">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"
+            onclick="this.closest('.modal-backdrop').classList.remove('active')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Add Unit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Invite Tenant Modal -->
+  <div id="modal-invite-tenant" class="modal-backdrop" onclick="if(event.target===this)this.classList.remove('active')">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <h3>Invite Tenant</h3>
+          <p>Send an invitation link to your tenant to join Aletheia and manage their rent payments.</p>
+        </div>
+        <button class="modal-close" onclick="this.closest('.modal-backdrop').classList.remove('active')">✕</button>
+      </div>
+      <form id="form-invite-tenant" onsubmit="event.preventDefault();pages.buildingDetail.sendInvite()">
+        <div class="modal-body flex flex-col gap-4">
+          <input type="hidden" id="invite-unit-id">
+          <div class="form-group">
+            <label>Tenant Email Address <span class="required">*</span></label>
+            <input type="email" class="form-control" id="invite-email" placeholder="e.g., tenant@email.com" required>
+          </div>
+          <div class="form-group">
+            <label>Tenant Phone Number <span class="optional">(Optional)</span></label>
+            <div class="input-with-icon">
+              <span class="input-icon" style="font-size:0.8rem;left:0.75rem">+234</span>
+              <input type="tel" class="form-control" id="invite-phone" placeholder="801 234 5678"
+                style="padding-left:3rem">
+            </div>
+          </div>
+          <div class="form-hint">ℹ The invite link will be valid for 48 hours. Your tenant will receive both an email
+            and an SMS (if phone provided).</div>
+        </div>
+        <div class="modal-footer" style="flex-direction:column;gap:0.5rem">
+          <button type="submit" class="btn btn-primary w-full">Send Invite</button>
+          <button type="button" class="btn btn-secondary w-full"
+            onclick="this.closest('.modal-backdrop').classList.remove('active')">Cancel and Go Back</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Maintenance Request Modal -->
+  <div id="modal-maintenance" class="modal-backdrop" onclick="if(event.target===this)this.classList.remove('active')">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <h3>New Maintenance Request</h3>
+          <p>Describe the issue for your landlord.</p>
+        </div>
+        <button class="modal-close" onclick="this.closest('.modal-backdrop').classList.remove('active')">✕</button>
+      </div>
+      <form id="form-maintenance" onsubmit="event.preventDefault();pages.maintenance.createRequest()">
+        <div class="modal-body flex flex-col gap-4">
+          <div class="form-group">
+            <label>Issue Title</label>
+            <input type="text" class="form-control" id="maintenance-title" placeholder="e.g., Leaking pipe in bathroom"
+              required>
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-control" id="maintenance-desc" rows="4"
+              placeholder="Provide details about the issue..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Priority</label>
+            <select class="form-control" id="maintenance-priority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+              <option value="urgent">Urgent</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"
+            onclick="this.closest('.modal-backdrop').classList.remove('active')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Submit Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/pages.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DumApp | Landlord Portal Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f6f7f8;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-20 lg:w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col transition-all duration-300">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary size-10 rounded-lg flex items-center justify-center text-white shrink-0">
+<span class="material-symbols-outlined text-2xl">apartment</span>
+</div>
+<div class="hidden lg:block">
+<h1 class="font-bold text-xl tracking-tight">DumApp</h1>
+<p class="text-xs text-slate-500 font-medium">Landlord Portal</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-2 overflow-y-auto custom-scrollbar">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium text-sm hidden lg:block">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">home_work</span>
+<span class="font-medium text-sm hidden lg:block">Properties</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-medium text-sm hidden lg:block">Tenants</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-medium text-sm hidden lg:block">Payments</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="font-medium text-sm hidden lg:block">Reports</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-medium text-sm hidden lg:block">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- Top Header -->
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 shrink-0">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-slate-400" placeholder="Search properties, tenants..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 size-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+</button>
+<div class="flex items-center gap-3 pl-6 border-l border-slate-200 dark:border-slate-800">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-semibold">Tunde Bakare</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-wider font-bold">Landlord</p>
+</div>
+<div class="size-10 rounded-full bg-slate-200 bg-center bg-cover" data-alt="Portrait of a professional landlord in a suit" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDXGfMcUtHkFmDbc3_sSDiu-NXbG6OP0ufppEWUwPhxy_z36EacJYlCdy50K1yIO5P1iF0lDgkxmysm3pMO5Lecxqa-Wx59a0_fLL-JZc7391xMh9loopZM2vxZYqQthjcc91awdWSGG174E2tc3hFKSI1ddUMHW4OKGMSTZePw_qoKFyg1jaVCguijIXwrYrcVK9Q4X41FO9oFd4-IPTIbXWso7DDhSFoiwpeC6MOcMeAMdej6QXxZjrLNcM0rspyPl57QtmfwMyg')"></div>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<main class="flex-1 overflow-y-auto p-8 custom-scrollbar">
+<!-- Welcome Section -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div>
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Welcome back, Chief</h2>
+<p class="text-slate-500 text-sm">Overview of your property portfolio performance today.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-lg">calendar_today</span>
+                            This Month
+                        </button>
+<button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-lg">add</span>
+                            Add Property
+                        </button>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+<!-- Stat Card 1 -->
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800">
+<p class="text-slate-500 text-xs font-medium uppercase tracking-wider mb-2">Total Buildings</p>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-bold">12</h3>
+<span class="text-emerald-500 text-xs font-bold flex items-center bg-emerald-50 dark:bg-emerald-500/10 px-1.5 py-0.5 rounded">+2%</span>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800">
+<p class="text-slate-500 text-xs font-medium uppercase tracking-wider mb-2">Total Units</p>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-bold">48</h3>
+<span class="text-emerald-500 text-xs font-bold flex items-center bg-emerald-50 dark:bg-emerald-500/10 px-1.5 py-0.5 rounded">+5%</span>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800">
+<p class="text-slate-500 text-xs font-medium uppercase tracking-wider mb-2">Total Tenants</p>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-bold">42</h3>
+<span class="text-primary text-xs font-bold flex items-center bg-primary/10 px-1.5 py-0.5 rounded">Stable</span>
+</div>
+</div>
+<!-- Stat Card 4 -->
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800">
+<p class="text-slate-500 text-xs font-medium uppercase tracking-wider mb-2">Rent Collected</p>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-bold">₦4.2M</h3>
+<span class="text-emerald-500 text-xs font-bold flex items-center bg-emerald-50 dark:bg-emerald-500/10 px-1.5 py-0.5 rounded">↑12%</span>
+</div>
+</div>
+<!-- Stat Card 5 -->
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800">
+<p class="text-slate-500 text-xs font-medium uppercase tracking-wider mb-2">Total Outstanding</p>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-bold text-red-500">₦850k</h3>
+<span class="text-red-500 text-xs font-bold flex items-center bg-red-50 dark:bg-red-500/10 px-1.5 py-0.5 rounded">↓3%</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Chart Section -->
+<div class="lg:col-span-2 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<h3 class="font-bold text-slate-800 dark:text-white">Revenue Growth Trend</h3>
+<div class="flex gap-2">
+<span class="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
+<span class="size-2 rounded-full bg-primary"></span>
+                                    Actual Rent
+                                </span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col justify-between">
+<div class="relative h-64 w-full">
+<!-- Abstract Chart Visualization -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 40">
+<path d="M0 35 Q 20 25, 40 28 T 80 10 T 100 15" fill="none" stroke="#137fec" stroke-linecap="round" stroke-width="0.5"></path>
+<path d="M0 35 Q 20 25, 40 28 T 80 10 T 100 15 V 40 H 0 Z" fill="url(#chartGradient)" opacity="0.1"></path>
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#137fec"></stop>
+<stop offset="100%" stop-color="#137fec" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+<div class="border-b border-slate-50 dark:border-slate-800 w-full h-0"></div>
+<div class="border-b border-slate-50 dark:border-slate-800 w-full h-0"></div>
+<div class="border-b border-slate-50 dark:border-slate-800 w-full h-0"></div>
+<div class="border-b border-slate-50 dark:border-slate-800 w-full h-0"></div>
+<div class="border-b border-slate-50 dark:border-slate-800 w-full h-0"></div>
+</div>
+</div>
+<div class="flex justify-between text-[10px] font-bold text-slate-400 uppercase tracking-tighter pt-4">
+<span>Jan</span>
+<span>Feb</span>
+<span>Mar</span>
+<span>Apr</span>
+<span>May</span>
+<span>Jun</span>
+<span>Jul</span>
+<span>Aug</span>
+<span>Sep</span>
+<span>Oct</span>
+<span>Nov</span>
+<span>Dec</span>
+</div>
+</div>
+</div>
+<!-- Property Quick List -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<h3 class="font-bold text-slate-800 dark:text-white">Active Properties</h3>
+<button class="text-xs font-bold text-primary hover:underline">View All</button>
+</div>
+<div class="divide-y divide-slate-50 dark:divide-slate-800">
+<!-- Property Item -->
+<div class="p-4 flex items-center gap-4">
+<div class="size-12 rounded-lg bg-slate-100 bg-center bg-cover shrink-0" data-alt="Exterior view of a modern apartment complex" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuArkg54dslk5oweSEnzBR0Q6At4ywYGnp9cHKShr2_ioJt-5tK9fFYlT3IHYHzWP5QHrZmp9Ml6mdBe939eCSSXkpmD7kXdi1J0c8blUIWEAhSJhcuKcLDJQi-x2THGNWfBAd4j4J4ApsVGEh1odRTEUigwyDEzE5UYBbPE6w_roB0xqiwU_v9kz23J9ltqmHeRqdzEo12tqSbXI9riR_rQ_1D9w6tZ6Uwrf8WChgpQ5vqcC5I9f9VocFv8AwsFJqsBQg5TgK1Gb6U')"></div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold truncate">Eko Atlantic Towers</p>
+<p class="text-xs text-slate-500">Victoria Island, Lagos</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-slate-900 dark:text-white">95%</p>
+<p class="text-[10px] text-slate-400 uppercase">Occ.</p>
+</div>
+</div>
+<!-- Property Item -->
+<div class="p-4 flex items-center gap-4">
+<div class="size-12 rounded-lg bg-slate-100 bg-center bg-cover shrink-0" data-alt="Modern suburban townhouse in Lekki" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuASNVbAc1_ZnNRrlu2875arRRK_kjcBHyv1XACMfO9NKBZ8Zwpvl_EWVDTdL9PSTLZOesqmTyi5aRLjaMRTa45CxI3b4eRM7zMJrnK9wLAE8n1Dg_fA_QQP5kxj1g9h8OLkoxwoeLvUe_6g3Yw5-PMY4kVZ-fHuo3ds53YQYz2uLs10b_uOGRszuULUw8bgVbhgWzUqa_2rwJdad9SaT8JEi73nfCRRcO-0Lti1ywP5HFabXKlOxKF1eLO7azWyO-jZVkmXdWa81Dk')"></div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold truncate">Lekki Gardens Phase 3</p>
+<p class="text-xs text-slate-500">Lekki, Lagos</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-slate-900 dark:text-white">88%</p>
+<p class="text-[10px] text-slate-400 uppercase">Occ.</p>
+</div>
+</div>
+<!-- Property Item -->
+<div class="p-4 flex items-center gap-4">
+<div class="size-12 rounded-lg bg-slate-100 bg-center bg-cover shrink-0" data-alt="Contemporary residential villa in Abuja" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBtV7EJTURkbMYF7QghOpZQ5eGrKGpFujMEjAZHP4ZO9Jz7AhBW5CoPlOarlW3CqbZtOrlaTgrOAUqxiBVOaKqL5pX88MHZ8gFQ_-VxwLOIV77oUqaqBcVfuw9bHVAMX8S_8be54AkrwISI88Ax0oVlswdZdFLITH3wPovCL-utJZ3-RWIIpmL9Q16i5Oh4mAzS5YgmxeE26JEgOfsi4mqTTvNLevM0s-y-9sjmbgMUMm6yXgRnGEncEuNnemuDzvVSKCmoFfxMmdw')"></div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold truncate">Maitama Presidential Villa</p>
+<p class="text-xs text-slate-500">Maitama, Abuja</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-slate-900 dark:text-white">100%</p>
+<p class="text-[10px] text-slate-400 uppercase">Occ.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Payments Table -->
+<div class="mt-8 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<h3 class="font-bold text-slate-800 dark:text-white">Recent Payments</h3>
+<button class="text-sm font-medium text-slate-500 flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                            Filter
+                        </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50">
+<th class="px-6 py-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Tenant</th>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Property</th>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Amount</th>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Date</th>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 bg-center bg-cover" data-alt="Portrait of a male tenant" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjxibMOPX4UmP-GYlnWnshuUQr6Ak4zWPdRDbjdiTp_VWh95DoceIX19Ot8SpQXIK-qFVuiYWjYPsb_seremK--0DGtGYu8OyKnYFABP1FLVZyt-e1gVdgpXI0HH38plIBxxKqJuL20R7ROtp29HEoiGrZoIqrJOMZ41eRT5OhsGeKj_JN4h6731CPtYiudTAWveQGA4OfRcrB3QRYexmMtfUeF_CM-59o2KiT3Qwjkn6Q4PEcru7BMgRWjrDed0DqhgSF9vxgRj0')"></div>
+<span class="text-sm font-medium">Chidi Okafor</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Eko Towers, Apt 402</td>
+<td class="px-6 py-4 text-sm font-bold">₦450,000</td>
+<td class="px-6 py-4 text-sm text-slate-500">Oct 24, 2023</td>
+<td class="px-6 py-4 text-right">
+<span class="bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Success</span>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 bg-center bg-cover" data-alt="Portrait of a female tenant" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCWUtPBziqDQ_T13HN87lhoGlJr0_LPjMBRwVgn1jrqxEajUkUtzTTJvDRXAV4lGsHf3L6wS74fVi4T1iooKsgmczCQzP3DSTt1Ei_6_tNi0o6spmNb3WeVsQvQGbEBteSAgh-8U6ZuiZqovmThYl5-WxBJ4Qb_Uosw54wd4MEnNgvpTFxxw7apfHvACrdXIx0a_uq1C8UUxVrt8l6reVDev20vSRD9eIuMEyf5YRFwvgan3Dezxg5erqajRjBYmdqO-45FeHCpnRc')"></div>
+<span class="text-sm font-medium">Amina Bello</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Lekki Gardens, Block B</td>
+<td class="px-6 py-4 text-sm font-bold">₦210,000</td>
+<td class="px-6 py-4 text-sm text-slate-500">Oct 22, 2023</td>
+<td class="px-6 py-4 text-right">
+<span class="bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Success</span>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 bg-center bg-cover" data-alt="Portrait of a male tenant smiling" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC5nKrbH_JPeM0USmKepo_KTR46LV0BRs4TWh81K0iHhcjw4bjqW8g3QH07yV9CR32L2gQSgjSpE0_nEPLJPe4BDWt61LKGr94-Ka04kAqpJmFZi89PV3voJ-tkelhuraaS4bT5arzQH4r-eA_3pFQ-TlCIe0An8gZU8sTSR15jZmlrOeuAamdW508oqC3O3-W1ZNNj_I0MlFokAJ2Jd8Qoqn9dWmCrR3IxjpuYqzx0dKYSgQh8k6CrSqYOsJ4OB0JJXcD6N9xpiMU')"></div>
+<span class="text-sm font-medium">Oluwaseun Ade</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Maitama Villa, Unit 3</td>
+<td class="px-6 py-4 text-sm font-bold">₦850,000</td>
+<td class="px-6 py-4 text-sm text-slate-500">Oct 20, 2023</td>
+<td class="px-6 py-4 text-right">
+<span class="bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Pending</span>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 bg-center bg-cover" data-alt="Portrait of a young female tenant" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAx8qIXsaNifUEzkPbUS6H2sskhN5Rzc4GW5Ydi_RvAXg5u8qQWaKgM9zGLWIXn5t6YD-E8gbfR3QaHD6r6-9Tqrn5QNkyNmAPNtwNzRy8q-8EOiMfElhsrwOZe8O2-Pj5wAA19TBd6wocGm8xKeTglik66v8ZagO7eQC6mFu4YG93OKLLV3vqpApjmoFkz16Dhdcq6FpyY9OiEGaZHjILhoaDxAbka31aWX23nZacTEdyF9CNx_hSFqLqY04BZbR1JvTloF1cErCs')"></div>
+<span class="text-sm font-medium">Kemi Adetiba</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Eko Towers, Apt 105</td>
+<td class="px-6 py-4 text-sm font-bold">₦450,000</td>
+<td class="px-6 py-4 text-sm text-slate-500">Oct 19, 2023</td>
+<td class="px-6 py-4 text-right">
+<span class="bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Success</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

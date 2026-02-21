@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DumApp - Property Management, Simplified.</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ecda",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#102220",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+<!-- Logo Section -->
+<div class="flex items-center gap-2 group cursor-pointer">
+<div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl font-bold">domain</span>
+</div>
+<h1 class="text-2xl font-black tracking-tight text-slate-900 dark:text-white">DumApp</h1>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors" href="#">Features</a>
+<a class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors" href="#">Pricing</a>
+<a class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors" href="#">About</a>
+</nav>
+<!-- CTA Buttons -->
+<div class="flex items-center gap-4">
+<button class="hidden sm:flex text-sm font-bold text-slate-700 dark:text-slate-200 hover:text-primary px-4 py-2 transition-colors">
+                    Login
+                </button>
+<button class="bg-primary text-slate-900 font-bold text-sm px-6 py-2.5 rounded-lg hover:brightness-105 active:scale-95 transition-all shadow-sm shadow-primary/20">
+                    Sign Up
+                </button>
+</div>
+</div>
+</header>
+<!-- Main Hero Section -->
+<main class="relative overflow-hidden">
+<!-- Subtle Background Decoration -->
+<div class="absolute top-0 right-0 -z-10 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl -mr-64 -mt-32"></div>
+<div class="absolute bottom-0 left-0 -z-10 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl -ml-32 -mb-32"></div>
+<div class="max-w-7xl mx-auto px-6 lg:px-10 pt-16 pb-24 lg:pt-24 lg:pb-32">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<!-- Left Content Column -->
+<div class="flex flex-col gap-8 max-w-2xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-slate-800 dark:text-slate-200 text-xs font-bold uppercase tracking-wider border border-primary/20">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+                        Optimized for Nigerian Landlords
+                    </div>
+<div class="space-y-4">
+<h2 class="text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight text-slate-900 dark:text-white">
+                            Property Management, <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-teal-600">Simplified.</span>
+</h2>
+<p class="text-lg lg:text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+                            Effortlessly track leases, automate rent collection in ₦, and manage tenants across Lagos and beyond. The modern operating system for the Nigerian market.
+                        </p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 items-center">
+<button class="w-full sm:w-auto px-8 py-4 bg-primary text-slate-900 text-lg font-bold rounded-xl shadow-lg shadow-primary/25 hover:brightness-105 hover:-translate-y-0.5 active:translate-y-0 transition-all">
+                            Get Started for Free
+                        </button>
+<button class="w-full sm:w-auto px-8 py-4 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white text-lg font-bold rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors inline-flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">play_circle</span>
+                            Watch Demo
+                        </button>
+</div>
+<!-- Trusted By Section -->
+<div class="mt-8 flex flex-col gap-4">
+<p class="text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">Trusted by leading estates</p>
+<div class="flex flex-wrap gap-8 items-center opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+<!-- Placeholder Logo 1 -->
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-2xl">apartment</span>
+<span class="font-bold text-lg">Lagos Realty</span>
+</div>
+<!-- Placeholder Logo 2 -->
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-2xl">home_work</span>
+<span class="font-bold text-lg">Abuja Suites</span>
+</div>
+<!-- Placeholder Logo 3 -->
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-2xl">corporate_fare</span>
+<span class="font-bold text-lg">Ibadan Estates</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Visual Column -->
+<div class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-tr from-primary/30 to-slate-200/20 rounded-2xl blur-2xl group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+<div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-slate-200 dark:bg-slate-800">
+<img alt="Modern Architecture" class="w-full h-full object-cover" data-alt="Minimalist high-quality photo of modern architectural building" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1r_sT3-3OfTqpEFkX1v4r0qnWz2f25heXjR1Cy7HjWUr23PIXpXwF743YbBjWFggsHjPk-LKjfQ5efutrNJ9RwQutJlTPMZ_vJqoqKgyf9p5wNyU88QWDdQPyGoMF-GyIPOoirzPufhANQrqNmSQ7dvHHXOY5zaEC-0Dz_3e56UwMskAqPIaSkmwqwn0OZyd-u_MQRQswm3KAWq9oKGqiJCTp5zji6ptgdnUirD6PglVlbTZJMPpVZ1mUQX4gxyX853ACsQvkiUQ"/>
+<!-- Floating Card Detail -->
+<div class="absolute bottom-6 left-6 right-6 p-6 bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg rounded-xl shadow-xl flex items-center justify-between border border-white/20">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-slate-900">
+<span class="material-symbols-outlined font-bold">payments</span>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-500 uppercase">Recent Payment</p>
+<p class="text-lg font-bold text-slate-900 dark:text-white">₦450,000.00</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-teal-600 bg-teal-50 dark:bg-teal-900/30 px-3 py-1 rounded-full text-sm font-bold">
+<span class="material-symbols-outlined text-sm">verified</span>
+                                Verified
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Summary Section -->
+<footer class="bg-white dark:bg-background-dark py-12 border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="flex flex-col gap-2 text-center md:text-left">
+<div class="flex items-center justify-center md:justify-start gap-2">
+<span class="material-symbols-outlined text-primary">domain</span>
+<span class="font-black text-xl">DumApp</span>
+</div>
+<p class="text-sm text-slate-500">Property management for the modern Nigerian market.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">share</span>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">alternate_email</span>
+</a>
+</div>
+<p class="text-xs font-medium text-slate-400">© 2024 DumApp. All rights reserved.</p>
+</div>
+</footer>
+</body></html>

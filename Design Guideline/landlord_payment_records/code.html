@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DumApp | Payment Records</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav {
+            background-color: rgba(19, 127, 236, 0.1);
+            color: #137fec;
+        }
+        /* Custom scrollbar for airy feel */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex">
+<!-- Sidebar Navigation -->
+<aside class="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col fixed h-full">
+<div class="p-6 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">apartment</span>
+</div>
+<div>
+<h1 class="text-xl font-bold tracking-tight text-primary">DumApp</h1>
+<p class="text-xs text-slate-500 font-medium uppercase tracking-wider">Landlord Portal</p>
+</div>
+</div>
+<nav class="flex-1 px-4 mt-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">domain</span>
+<span class="font-medium">Properties</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-medium">Tenants</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg active-nav" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-medium">Payments</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-medium">Leases</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 p-2">
+<img alt="Landlord profile" class="w-10 h-10 rounded-full border border-slate-200" data-alt="Landlord profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3HeJk4tIxE9UiX8SoMJ7QZtEXqCMqs4KYWisXU-jOEGu-P-ygkKxDpxLkbKHqp-iq85P7042qCr_KFzV0OAa8w8xNlDPH2ChvqjR0toCy7C0Laqh3tiEW74Cx2j6V3aStsJVaesYiNARZFhQRqQaCA1fLGUBEZ5hnuH-qXDc-UegrAvzT32cb2BnszQDsQ2D_LPMCdWSyL_r7YCrEMUkIqLNsIi_JvX5LNmkqEmIlu4PscpnLT-2l7nrCOCx2RLaBBjbZ8YI5pqE"/>
+<div class="overflow-hidden">
+<p class="text-sm font-semibold truncate">Alhaji Dangote</p>
+<p class="text-xs text-slate-500 truncate">Premium Account</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex-1 flex flex-col min-h-screen">
+<!-- Top Header -->
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 sticky top-0 z-10">
+<div class="flex items-center gap-2 text-sm text-slate-500">
+<a class="hover:text-primary transition-colors" href="#">Dashboard</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-slate-900 dark:text-slate-100 font-medium">Payment Records</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm w-72 focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search tenant, building or unit..." type="text"/>
+</div>
+<button class="relative text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+</button>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-8 max-w-7xl mx-auto w-full space-y-8">
+<!-- Page Title and Exports -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">Payment Records</h2>
+<p class="text-slate-500 mt-1">Review and manage all rental transactions across your property portfolio.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-sm font-medium">
+<span class="material-symbols-outlined text-lg">picture_as_pdf</span>
+                        Export PDF
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-sm font-medium">
+<span class="material-symbols-outlined text-lg">description</span>
+                        Export Excel
+                    </button>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-wrap items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="text-sm font-medium text-slate-500">Filters:</span>
+</div>
+<div class="relative">
+<select class="appearance-none pl-3 pr-10 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary min-w-[160px]">
+<option>All Buildings</option>
+<option>Lekki Phase 1</option>
+<option>Ikeja Plaza</option>
+<option>Sunrise Apartments</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none pl-3 pr-10 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary min-w-[140px]">
+<option>Status: All</option>
+<option>Paid</option>
+<option>Pending</option>
+<option>Overdue</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">expand_more</span>
+</div>
+<div class="relative">
+<button class="flex items-center gap-2 pl-3 pr-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined text-lg text-slate-400">calendar_today</span>
+<span>01/10/2023 - 31/10/2023</span>
+</button>
+</div>
+<button class="text-primary text-sm font-medium hover:underline ml-auto">Clear All Filters</button>
+</div>
+<!-- Data Table Container -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Tenant Name</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Building &amp; Unit</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Amount</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Date</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Method</th>
+<th class="px-6 py-4"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Table Row 1 -->
+<tr class="hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img alt="Tenant avatar" class="w-9 h-9 rounded-full" data-alt="Male tenant avatar profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQheQXXQy6u_zn3bcsh79otLn4YM3IBHo7dwSpkVaUD0AfeuWGxBfxf22V24gsQDZgji1dft3HnoRnl4rIWNGrmS2BfsE7rIWhFr4jB8UglFUxhdzT748lESOAxgUGW3_mHgg4za-TWnr_A3mVz8seITpqYgc50EoGqSBJISzmi4tlS5LPWAOORC4nIjrzJNZtmR0GfvEjKGFlVCDkQucVMZ0mz9aOMH_YkqQNwOp2-ioWgg6nrvjlafYEIeF6RhAsm9b1Wz2vNzg"/>
+<span class="font-medium text-slate-900 dark:text-slate-100">Chidi Okoro</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-medium text-slate-700 dark:text-slate-300">Lekki Phase 1</div>
+<div class="text-xs text-slate-500">Unit 4A</div>
+</td>
+<td class="px-6 py-4 font-semibold text-slate-900 dark:text-slate-100">
+                                    ₦ 450,000
+                                </td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">
+                                    12/10/2023
+                                </td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
+                                        Paid
+                                    </span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">
+                                    Bank Transfer
+                                </td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Table Row 2 -->
+<tr class="hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img alt="Tenant avatar" class="w-9 h-9 rounded-full" data-alt="Female tenant avatar profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlqI8Onxl-7LGYzNLVEnWwpqnUb_Y2e92DGNcVC7cX8ebudyELMMrX4qm_p-sUigX1mDMotv_tiRgmAzfAgHyrDsgJuBOeYvH76Sg-LtZgr4b2JFkqsVdgUQA2CtKpWvyMfrxFWN-y3ek4By_soSaywyHaxKoA9gou8qjl8wgF5lo1L6CaWqgiZgYoMso9-lOMB8q8RZCj2Ugs5I_mTNOPlzzdu0nA_QhMC6VuV9l1ErtP6hTZzVbtgKOZrjxHNz5lr_hWTZiOTdE"/>
+<span class="font-medium text-slate-900 dark:text-slate-100">Aisha Bello</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-medium text-slate-700 dark:text-slate-300">Ikeja Plaza</div>
+<div class="text-xs text-slate-500">Office 12</div>
+</td>
+<td class="px-6 py-4 font-semibold text-slate-900 dark:text-slate-100">
+                                    ₦ 1,200,000
+                                </td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">
+                                    10/10/2023
+                                </td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
+                                        Paid
+                                    </span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">
+                                    Card Payment
+                                </td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Table Row 3 -->
+<tr class="hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img alt="Tenant avatar" class="w-9 h-9 rounded-full" data-alt="Male tenant avatar profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCno8REJeHJEWPnhM9PLL-MCW85Jbin2JVEqrqbmLnAk508n9AtR3P_lWHyVkJOpRTIU-g21HWwVgPPJCNUhGhb0nKikRTEn4PXefN5TGUkfd3ncnY6sDfKUFwmv6NsxRvF_mzSPHvoaWUCv0iDrItFc6Nb9UgPahCCu-psI4e0_Y65Q65MC8jW1bmXd6ux-kAoTkVgFeFHrMXp_c2cXE5uuL_9FKeMHd77SUvqfB7rmKV-jUKa0qxE8DFNj619mmciAImrN_Ju1jA"/>
+<span class="font-medium text-slate-900 dark:text-slate-100">Olumide Dada</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-medium text-slate-700 dark:text-slate-300">Sunrise Apts</div>
+<div class="text-xs text-slate-500">Unit B7</div>
+</td>
+<td class="px-6 py-4 font-semibold text-slate-900 dark:text-slate-100">
+                                    ₦ 350,000
+                                </td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">
+                                    05/10/2023
+                                </td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
+                                        Pending
+                                    </span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">
+                                    -
+                                </td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Table Row 4 -->
+<tr class="hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img alt="Tenant avatar" class="w-9 h-9 rounded-full" data-alt="Female tenant avatar profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATo8tI5I3jTLDE5yzgep5GSCY6Q8JZqEZTxMxyv8nv1mRgiH8y1_GXsRDHEpPJ_xDds8v1s09M7MX9MsSRqpNanXiPEUBg9kQP-qofeBbNphaVTl_A2l4NgM7koJk5BoGTv71k0YYDIqkUwYxxODHIlyYA_r-QvLegw8ypSm92Nz7wLP_Ys5FkmSkV3oJ0IdGVuosgC5pGUQoj7AJpFUdrqN6iPtplzi3E7sw3wYMnoRtpYmCCon7sGxw2YQ51gkDq1RgcborTijs"/>
+<span class="font-medium text-slate-900 dark:text-slate-100">Teniola Ajayi</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-medium text-slate-700 dark:text-slate-300">Lekki Phase 1</div>
+<div class="text-xs text-slate-500">Unit 2C</div>
+</td>
+<td class="px-6 py-4 font-semibold text-slate-900 dark:text-slate-100">
+                                    ₦ 450,000
+                                </td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">
+                                    28/09/2023
+                                </td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-400">
+                                        Overdue
+                                    </span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">
+                                    -
+                                </td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Table Row 5 -->
+<tr class="hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img alt="Tenant avatar" class="w-9 h-9 rounded-full" data-alt="Male tenant avatar profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZ-Y23-Z4LmmNuwSteFNNS7OxXBucOOS0PdkH46dhFBkrDR-a-0ruGAYvVMMQWEUZA6B0kSjFwKzFZGUdVL_Ra03J5JCK7qY-LycQvl4zPmfTGW7dO1cyKUHMY4iVcduATE1-hwS5qxVsCC8fx1BJNi4PVR3wz0spAw9mtN2TM_plfLRVzIiJyB39mcq_Yxtw721D3VUdzdB72-t1aYGWMG0DJdCKj73YYEUP9c-sV-zBrb-FOchQ6-p0DlPYa90V4VfX0wU8HzDw"/>
+<span class="font-medium text-slate-900 dark:text-slate-100">Emeka Obi</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-medium text-slate-700 dark:text-slate-300">Sunrise Apts</div>
+<div class="text-xs text-slate-500">Penthouse 1</div>
+</td>
+<td class="px-6 py-4 font-semibold text-slate-900 dark:text-slate-100">
+                                    ₦ 2,500,000
+                                </td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">
+                                    25/09/2023
+                                </td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
+                                        Paid
+                                    </span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">
+                                    USSD
+                                </td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="px-6 py-4 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<p class="text-sm text-slate-500">Showing <span class="font-semibold text-slate-900 dark:text-slate-100">1 - 5</span> of <span class="font-semibold text-slate-900 dark:text-slate-100">128</span> records</p>
+<div class="flex items-center gap-2">
+<button class="p-2 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-white dark:hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all" disabled="">
+<span class="material-symbols-outlined text-xl">chevron_left</span>
+</button>
+<div class="flex items-center gap-1">
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-primary text-white font-medium text-sm">1</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-sm">2</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-sm">3</button>
+</div>
+<button class="p-2 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-white dark:hover:bg-slate-800 transition-all">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Summary Stats (Minimal) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+<div>
+<p class="text-sm text-slate-500 font-medium">Monthly Collection</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-slate-100">₦ 8.4M</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 bg-amber-100 dark:bg-amber-900/30 text-amber-600 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">pending_actions</span>
+</div>
+<div>
+<p class="text-sm text-slate-500 font-medium">Pending Approvals</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-slate-100">₦ 1.2M</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 bg-rose-100 dark:bg-rose-900/30 text-rose-600 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div>
+<p class="text-sm text-slate-500 font-medium">Total Overdue</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-slate-100">₦ 450k</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

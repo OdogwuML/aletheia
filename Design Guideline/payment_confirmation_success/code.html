@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Payment Success | DumApp</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#19e6c4",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#11211e",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="w-full border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="bg-primary p-1.5 rounded-lg">
+<svg class="size-6 text-slate-900" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold tracking-tight">DumApp</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Properties</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Payments</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Maintenance</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="object-cover size-full" data-alt="Close up portrait of a smiling person profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMjo9ZGKBc1gbCoDy_NIs9_ppTcfh7TD3CM5QDc6iMW3baAfTzOZdOULkc8S9f58fRcr-6T9q9rRolioeVDt9ANPUBJ4InSTRCcf9l9M4PzbKrGV7_e9L2vHf5khI8kjpBit-qoqGjyT5L6sdHW9s8jNiIy2a0HDaAyYhnfUxCNvnPhSx9RVaXGLeHZqBbKcfgITYl5PpQwDVbtm5mrBq2Th3U17zWUY9o2gHf8-FX5bpySJBB7cd15Fo0YgQc0TK82lCU--kDWxI"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center p-6">
+<div class="w-full max-w-[580px] bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 overflow-hidden">
+<!-- Success Animation/Icon Area -->
+<div class="pt-12 pb-8 flex flex-col items-center text-center px-8">
+<div class="size-24 bg-primary/10 rounded-full flex items-center justify-center mb-6 border-4 border-primary/5">
+<span class="material-symbols-outlined text-primary text-5xl font-bold">check_circle</span>
+</div>
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">Payment Successful</h1>
+<p class="text-slate-500 dark:text-slate-400 max-w-sm">
+                    Your payment has been processed successfully. A copy of the receipt has been sent to <span class="font-medium text-slate-700 dark:text-slate-200">f.olawale@email.com</span>
+</p>
+</div>
+<!-- Transaction Details -->
+<div class="px-8 pb-8">
+<div class="bg-background-light dark:bg-background-dark/40 rounded-xl p-6 border border-slate-100 dark:border-slate-800">
+<div class="flex justify-between items-start mb-6 pb-6 border-b border-slate-200 dark:border-slate-700">
+<div>
+<p class="text-xs uppercase tracking-wider font-semibold text-slate-400 mb-1">Total Amount Paid</p>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white">₦ 1,500,000.00</h2>
+</div>
+<div class="bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-tight">
+                            Paid
+                        </div>
+</div>
+<div class="grid grid-cols-2 gap-y-6 gap-x-4">
+<div>
+<p class="text-xs text-slate-400 mb-1">Property</p>
+<p class="text-sm font-semibold text-slate-700 dark:text-slate-200">Lekki Gardens, Unit 4B</p>
+</div>
+<div>
+<p class="text-xs text-slate-400 mb-1">Payment Type</p>
+<p class="text-sm font-semibold text-slate-700 dark:text-slate-200">Annual Rent (2024)</p>
+</div>
+<div>
+<p class="text-xs text-slate-400 mb-1">Transaction ID</p>
+<p class="text-sm font-semibold text-slate-700 dark:text-slate-200 uppercase">TXN-882910442-NG</p>
+</div>
+<div>
+<p class="text-xs text-slate-400 mb-1">Date &amp; Time</p>
+<p class="text-sm font-semibold text-slate-700 dark:text-slate-200">Oct 24, 2023 • 14:32 WAT</p>
+</div>
+</div>
+</div>
+<!-- Featured Property Image (Visual Polish) -->
+<div class="mt-6 rounded-lg overflow-hidden h-32 relative group">
+<img alt="Property Image" class="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500" data-alt="Modern luxury villa with pool in Lekki Lagos" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7D0SV1qs2jaxws9UJ7NsqNoQzQjGiuYLRXJDFn3vR6gdGWOtjj_LaDmiTLEyglTfdoh72Hu6_V-j0F5H3dBgI1X61d8QSs21E1WeBgiwa1zg4YiJUzyEEK9Cge_lVH8f1i1ajuoVXK-AEXOOmnZocdZPBGGkpaEmI1qyFWnGqskCOutMN1v2XtKu92L4x7tjtEGiJ8Re6xWFIKfsbY3hklCnhVkhY7Eu2h7GFTEeH1novQKt_oRR_2WEr18rI1a_-mO5TYssZNzA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent flex items-end p-4">
+<span class="text-white text-xs font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">location_on</span> Lagos, Nigeria
+                        </span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="mt-8 flex flex-col gap-3">
+<button class="w-full bg-primary hover:bg-primary/90 text-slate-900 font-bold h-12 rounded-lg flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">download</span>
+                        Download Receipt
+                    </button>
+<button class="w-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold h-12 rounded-lg transition-all">
+                        Back to Dashboard
+                    </button>
+</div>
+<div class="mt-6 text-center">
+<p class="text-xs text-slate-400">
+                        Facing issues? <a class="text-primary hover:underline underline-offset-4" href="#">Contact Support</a>
+</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="py-8 text-center border-t border-slate-200 dark:border-slate-800">
+<p class="text-sm text-slate-400">© 2024 DumApp Property Management. All rights reserved.</p>
+</footer>
+</body></html>

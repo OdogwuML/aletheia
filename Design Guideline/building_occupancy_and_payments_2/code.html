@@ -1,0 +1,397 @@
+<html lang="en"><head></head><body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">``` dream-html
+
+
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Building Occupancy and Payments - DumApp</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "teal-accent": "#0d9488",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .tabular-nums {
+            font-variant-numeric: tabular-nums;
+        }
+    </style>
+
+
+<header class="sticky top-0 z-50 bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 px-6 lg:px-10 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-1.5 rounded-lg text-white">
+<span class="material-symbols-outlined block text-xl text-white">domain</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">DumApp</h1>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-semibold text-primary" href="#">Properties</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">Tenants</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">Payments</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm w-64 focus:ring-2 focus:ring-primary" placeholder="Search units..." type="text"/>
+</div>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-background-dark"></span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs border border-primary/30">
+                JD
+            </div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 lg:px-10 py-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div class="space-y-1">
+<div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-1">
+<a class="hover:text-primary" href="#">Properties</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span>Emerald Courts</span>
+</div>
+<h2 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white">Emerald Courts - Building A</h2>
+<div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<p class="text-sm">12 Musa Yar'Adua St, Victoria Island, Lagos</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex flex-col">
+<label class="text-[10px] uppercase font-bold text-slate-400 mb-1 ml-1 tracking-wider">Billing Period</label>
+<div class="relative">
+<select class="appearance-none bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg pl-3 pr-10 py-2 text-sm font-semibold focus:ring-2 focus:ring-primary focus:border-primary cursor-pointer min-w-[160px]">
+<option>October 2023</option>
+<option selected="">November 2023</option>
+<option>December 2023</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">expand_more</span>
+</div>
+</div>
+<button class="bg-primary text-white h-10 px-5 rounded-lg text-sm font-bold flex items-center gap-2 shadow-sm hover:shadow-md transition-all self-end">
+<span class="material-symbols-outlined text-lg">add</span>
+                New Unit
+            </button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-10">
+<div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Total Units</p>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-black tabular-nums">24</span>
+<span class="text-xs text-slate-400 font-medium">100%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-700 h-1.5 rounded-full mt-3">
+<div class="bg-slate-400 h-full rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Occupied</p>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-black tabular-nums">20</span>
+<span class="text-xs text-primary font-bold">83.3%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-700 h-1.5 rounded-full mt-3">
+<div class="bg-primary h-full rounded-full" style="width: 83%"></div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Paid</p>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-black tabular-nums">15</span>
+<span class="text-xs text-green-600 font-bold">75%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-700 h-1.5 rounded-full mt-3">
+<div class="bg-green-500 h-full rounded-full" style="width: 75%"></div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Unpaid</p>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-black tabular-nums">5</span>
+<span class="text-xs text-red-500 font-bold">25%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-700 h-1.5 rounded-full mt-3">
+<div class="bg-red-500 h-full rounded-full" style="width: 25%"></div>
+</div>
+</div>
+<div class="bg-primary text-white p-5 rounded-xl border border-primary shadow-lg shadow-primary/20">
+<p class="text-xs font-bold text-white/80 uppercase tracking-wider mb-1">Total Collected</p>
+<div class="flex flex-col">
+<span class="text-2xl font-black tabular-nums leading-none">₦4.52M</span>
+<div class="flex items-center gap-1 mt-2 text-xs font-bold text-white">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+                    +12% vs last month
+                </div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700">
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Unit</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Tenant</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Monthly Rent</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Date Paid</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Amount Paid</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-700">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="font-bold text-slate-900 dark:text-white tabular-nums">Unit 001</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-semibold text-sm">Chidi Azikiwe</span>
+<span class="text-xs text-slate-500">0803 123 4567</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="font-medium text-sm tabular-nums text-slate-700 dark:text-slate-300">₦350,000</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                                Paid
+                            </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-400 tabular-nums">
+                            02 Nov, 2023
+                        </td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="font-semibold text-sm text-green-600 tabular-nums">₦350,000</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary p-1">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="font-bold text-slate-900 dark:text-white tabular-nums">Unit 002</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-semibold text-sm">Amina Bello</span>
+<span class="text-xs text-slate-500">0701 987 6543</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="font-medium text-sm tabular-nums text-slate-700 dark:text-slate-300">₦420,000</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400">
+                                Unpaid
+                            </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-400 dark:text-slate-500 italic">
+                            Pending
+                        </td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="font-semibold text-sm text-slate-300 tabular-nums">—</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="bg-primary/10 text-primary text-[10px] font-black uppercase px-2 py-1 rounded hover:bg-primary/20 transition-colors">Remind</button>
+<button class="text-slate-400 hover:text-primary p-1">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="bg-slate-50/50 dark:bg-slate-900/20 hover:bg-slate-100 dark:hover:bg-slate-700/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="font-bold text-slate-900 dark:text-white tabular-nums">Unit 003</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-medium text-slate-400 italic">No Tenant Assigned</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="font-medium text-sm tabular-nums text-slate-400">₦350,000</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-200 text-slate-600 dark:bg-slate-700 dark:text-slate-400">
+                                Vacant
+                            </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-300 tabular-nums">—</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="font-semibold text-sm text-slate-300 tabular-nums">—</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="bg-teal- accent/10 text-teal-accent text-[10px] font-black uppercase px-2.5 py-1.5 border border-teal-accent/20 rounded hover:bg-teal-accent/20 transition-colors flex items-center gap-1.5 group">
+<span class="material-symbols-outlined text-[14px] group-hover:scale-110 transition-transform">send</span>
+                                    Invite Tenant
+                                </button>
+<button class="text-primary text-[10px] font-black uppercase px-2.5 py-1.5 border border-primary/30 rounded hover:bg-primary/10 transition-colors">Assign</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="font-bold text-slate-900 dark:text-white tabular-nums">Unit 004</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-semibold text-sm">Oluwaseun Adeyemi</span>
+<span class="text-xs text-slate-500">0802 555 1122</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="font-medium text-sm tabular-nums text-slate-700 dark:text-slate-300">₦350,000</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                                Paid
+                            </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-400 tabular-nums">
+                            01 Nov, 2023
+                        </td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="font-semibold text-sm text-green-600 tabular-nums">₦350,000</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary p-1">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="font-bold text-slate-900 dark:text-white tabular-nums">Unit 005</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-semibold text-sm">Fatima Suleiman</span>
+<span class="text-xs text-slate-500">0905 444 3322</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="font-medium text-sm tabular-nums text-slate-700 dark:text-slate-300">₦500,000</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400">
+                                Partial
+                            </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-400 tabular-nums">
+                            05 Nov, 2023
+                        </td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-semibold text-sm text-orange-600 tabular-nums">₦250,000</span>
+<span class="text-[10px] text-slate-400">Bal: ₦250k</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary p-1">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 bg-slate-50 dark:bg-slate-800/50 flex items-center justify-between border-t border-slate-200 dark:border-slate-700">
+<span class="text-sm text-slate-500 dark:text-slate-400">Showing 1-5 of 24 units</span>
+<div class="flex items-center gap-2">
+<button class="p-1 rounded hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded bg-primary text-white text-sm font-bold">1</button>
+<button class="w-8 h-8 rounded hover:bg-slate-200 dark:hover:bg-slate-700 text-sm font-bold">2</button>
+<button class="w-8 h-8 rounded hover:bg-slate-200 dark:hover:bg-slate-700 text-sm font-bold">3</button>
+<button class="p-1 rounded hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-lg text-slate-900 dark:text-white">Building Map</h3>
+<button class="text-xs font-bold text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">fullscreen</span> View Full
+                </button>
+</div>
+<div class="aspect-video bg-slate-100 dark:bg-slate-900 rounded-lg overflow-hidden relative">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="text-center">
+<span class="material-symbols-outlined text-4xl text-slate-300">map</span>
+<p class="text-xs text-slate-400 mt-2">Visual unit occupancy map loading...</p>
+</div>
+</div>
+<img alt="Building layout" class="w-full h-full object-cover opacity-20 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClU1slU1ioUo2jd-Qk0c3sd4ubT0CODJf6LoZFyIZCiiLX0VOZ2iUR1N-3p1CTNfrhqr3MbLiowARU4i9Q0b0WoCoweBL-UjiSlQI3nScTZYHvUks0KiLn_wDm0H4R4OfpQFA3B2nmzICWI8oWUJxLo0CoA4DzxT90j4aQMZwzQvoB3ETkgJkNRi2GmKjHlBgQGQtrmCZN1Y47WVJUYROZcD5Mj7dWCMWFctsuS1msTRgozT1VvXrXNiYkhX0X7apZicbW-oLXnkc"/>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
+<div>
+<h3 class="font-bold text-lg mb-1 text-slate-900 dark:text-white">Building Manager</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Primary contact for this property</p>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<img alt="Manager" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_3JvXGSCaJ9ubrc1IJ30Ua-KS-74HkMbmgTqp4Ci3FjWebk5HknB7QQyeAxPBumu0d3vhHxo0JetG0qp1hMJM45flvDm7739VO_7yABTXanHChYP0I0R8dBa-wkThnm1SMykb6y14-F2qjLfD8avOqn595b2oYjX2WcHqFNSvGDQhGdvmuK7NplK7RMT-6UeUsqnQFuEDH_EyvXM3v36zbRSV9AnGCPlOVZMF-BpU9z2kNbK5KPVZ_wvZ2G0yY1zXO0tseWA7brM"/>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">Samuel Okon</p>
+<p class="text-xs text-slate-500">Facilities Manager</p>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<button class="w-full py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 text-sm font-bold flex items-center justify-center gap-2 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors text-slate-700 dark:text-slate-200">
+<span class="material-symbols-outlined text-lg">call</span>
+                    Call Manager
+                </button>
+<button class="w-full py-2.5 rounded-lg bg-slate-900 dark:bg-white dark:text-slate-900 text-white text-sm font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-lg">mail</span>
+                    Send Report
+                </button>
+</div>
+</div>
+</div>
+</main>
+<footer class="py-10 text-center text-slate-400 text-xs">
+    © 2023 DumApp Property Management Solutions. Built for the Nigerian Market.
+</footer>
+
+</body></html>
